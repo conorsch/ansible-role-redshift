@@ -1,2 +1,11 @@
 ---
 # defaults file for redshift
+redshift_packages:
+  - redshift
+
+# Whether systemd service is enabled to autostart.
+redshift_service_enabled: yes
+# Whether role should ensure service is running
+redshift_service_state: started
+# Whether `--user` flag is passed to systemd.
+redshift_service_user: yes

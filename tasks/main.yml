@@ -1,2 +1,18 @@
 ---
 # tasks file for redshift
+- name: Install redshift packages.
+  become: yes
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ redshift_packages }}"
+
+- name: Configure redshift systemd service.
+  # Inverted logic: we do NOT want elevated privileges
+  # if passing `--user` flag to systemcftl.
+  become: not redshift_service_user
+  systemd:
+    name: redshift
+    enabled: "{{ redshift_service_enabled }}"
+    state: "{{ redshift_service_state }}"
+    user: "{{ redshift_service_user }}"
