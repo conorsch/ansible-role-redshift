@@ -9,6 +9,12 @@ Requirements
 
 Assumes systemd for init system (due to the `--user` flag).
 
+Limitations
+-----------
+Doesn't support passing in custom lat/long coordinates
+in the systemd unit file. Would happily accept a PR
+that does so in a sane way.
+
 Role Variables
 --------------
 
